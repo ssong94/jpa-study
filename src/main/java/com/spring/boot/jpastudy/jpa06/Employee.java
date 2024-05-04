@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 
 @Getter
 @Entity
@@ -19,7 +18,7 @@ public class Employee {
 	private String id;
 
 	@Embedded
-	private RabbitConnectionDetails.Address homeAddress;
+	private Address homeAddress;
 
 	@AttributeOverrides({
 			@AttributeOverride(name = "address1", column = @Column(name = "waddr1")),
@@ -27,7 +26,7 @@ public class Employee {
 			@AttributeOverride(name = "zipcode", column = @Column(name = "wzipcode"))
 	})
 	@Embedded
-	private RabbitConnectionDetails.Address workAddress;
+	private Address workAddress;
 
 
 }
